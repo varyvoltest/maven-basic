@@ -6,7 +6,7 @@ node {
     step([$class: 'JavadocArchiver', javadocDir: 'target/site/apidocs', keepAll: false])
 
     try {
-        sh '${mvnHome}/bin/mvn test -DmavenBasicNotFail'
+        sh '${mvnHome}/bin/mvn test'
     } catch (any) {
         currentBuild.result = 'FAILURE'
         throw any
