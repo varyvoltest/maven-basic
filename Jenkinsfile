@@ -1,7 +1,7 @@
 node {
     git url: 'https://github.com/varyvol/maven-basic'
     def mvnHome = tool 'M3'
-    cbEnv = ["MAVEN_HOME=${mvnHome}"]
+    cbEnv = ["PATH+MVN=${mvnHome}/bin", "MAVEN_HOME=${mvnHome}"]
     withEnv(cbEnv) {
         sh 'mvn javadoc:javadoc -f pom.xml'
         step([$class: 'JavadocArchiver', javadocDir: 'target/site/apidocs', keepAll: false])
