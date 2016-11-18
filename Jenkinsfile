@@ -1,5 +1,5 @@
 node {
-    git url: 'https://github.com/varyvol/maven-basic"
+    git url: 'https://github.com/varyvol/maven-basic'
     def mvnHome = tool 'M3'
 
     sh '${mvnHome}/bin/mvn javadoc:javadoc -f pom.xml'
