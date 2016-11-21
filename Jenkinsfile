@@ -10,7 +10,6 @@ node {
             sh 'mvn test'
         } catch (any) {
             currentBuild.result = 'FAILURE'
-            throw any
         } finally {
             junit 'target/surefire-reports/TEST-com.cloudbees.manticore.BasicTest.xml'
             step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'dev@example.com', sendToIndividuals: true])
