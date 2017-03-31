@@ -3,11 +3,19 @@ node {
     def mvnHome = tool 'M3'
     cbEnv = ["PATH+MVN=${mvnHome}/bin", "MAVEN_HOME=${mvnHome}"]
     withEnv(cbEnv) {
-        sh 'mvn javadoc:javadoc -f pom.xml'
+        try {
+            sh 'mvn javadoc:javadoc -f pom.xml'
+        } catch (e) {
+            bat 'mvn javadoc:javadoc -f pom.xml'
+        }
         step([$class: 'JavadocArchiver', javadocDir: 'target/site/apidocs', keepAll: false])
 
         try {
-            sh 'mvn test'
+            try {
+                sh 'mvn test'
+            } catch (e) {
+                bat 'mvn test'
+            }
         } catch (any) {
             currentBuild.result = 'FAILURE'
         } finally {
