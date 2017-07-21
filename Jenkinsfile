@@ -2,7 +2,7 @@ node {
     try {
         sh 'git config --add core.longpaths true'
     } catch (e) {
-        bat 'git config --add core.longpaths true
+        bat 'git config --add core.longpaths true'
     }
     git url: 'https://github.com/varyvol/maven-basic'
     def mvnHome = tool 'M3'
