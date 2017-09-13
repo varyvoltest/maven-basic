@@ -10,8 +10,8 @@ node {
                 println("Executing javadoc on windows")
                 bat 'mvn javadoc:javadoc -f pom.xml'
                 println("Successfully executed javadoc on windows")
-            } catch (e) {
-                echo e
+            } catch (ex) {
+                echo ex
                 currentBuild.result = 'FAILURE'
             }
         } 
