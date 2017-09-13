@@ -6,9 +6,14 @@ node {
         try {
             sh 'mvn javadoc:javadoc -f pom.xml'
         } catch (e) {
-            println("Executing javadoc on windows")
-            bat 'mvn javadoc:javadoc -f pom.xml'
-            println("Successfully executed javadoc on windows")
+            try {
+                println("Executing javadoc on windows")
+                bat 'mvn javadoc:javadoc -f pom.xml'
+                println("Successfully executed javadoc on windows")
+            } catch (e) {
+                echo e
+                currentBuild.result = 'FAILURE'
+            }
         } 
         step([$class: 'JavadocArchiver', javadocDir: 'target/site/apidocs', keepAll: false])
 
