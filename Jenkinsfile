@@ -8,7 +8,7 @@ node {
         } catch (e) {
             try {
                 println("Executing javadoc on windows")
-                def out = bat 'mvn javadoc:javadoc -f pom.xml', returnStdout: true
+                def out = bat script: 'mvn javadoc:javadoc -f pom.xml', returnStdout: true
                 println("Successfully executed javadoc on windows")
             } catch (ex) {
                 echo ex
