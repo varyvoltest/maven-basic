@@ -1,5 +1,5 @@
 node {
-    git url: 'https://github.com/varyvol/maven-basic'
+    git url: 'https://github.com/varyvoltest/maven-basic'
     def mvnHome = tool 'M3'
     cbEnv = ["PATH+MVN=${mvnHome}/bin", "MAVEN_HOME=${mvnHome}"]
     withEnv(cbEnv) {
